@@ -30,7 +30,7 @@ This is the **upgraded distribution** of JC Compute v1.0.0, now including compre
 ## Repository Structure
 
 ```
-jc-compute-current/
+jc-compute/
 ├── WHITEPAPER.pdf                 # Original v1.0.0 specification
 ├── OPERATIONAL_SEMANTICS.md       # Formal execution model (NEW)
 ├── README.md                       # Main documentation
@@ -38,7 +38,7 @@ jc-compute-current/
 │   ├── AUTHORITATIVE_CONVERGENCE.md
 │   └── BENCHMARKS.md
 │
-├── jc-compute/                     # Core implementation
+├── jc/                     # Core implementation
 │   ├── jc/                         # TypeScript runtime
 │   │   ├── src/                    # Source code
 │   │   ├── dist/                   # Compiled output
