@@ -1,0 +1,19 @@
+[
+  {
+    "id": "fixture-1",
+    "type": "counter.increment",
+    "payload": {
+      "amount": 1
+    },
+    "timestamp": 1779724800000
+  },
+  {
+    "id": "fixture-2",
+    "type": "counter.increment",
+    "payload": {
+      "amount": 2
+    },
+    "timestamp": 1779724800001,
+    "parentEventId": "fixture-1"
+  }
+]

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JC Compute Runtime Visualization</title>
+<style>
+body {
+  background: #0a0a0a;
+  color: #00ff88;
+  font-family: monospace;
+}
+.node {
+  width: 120px;
+  padding: 10px;
+  border: 1px solid #00ff88;
+  margin: 10px;
+}
+.event {
+  color: #88ccff;
+}
+</style>
+</head>
+<body>
+
+<h1>JC Compute — Deterministic Runtime Visualization</h1>
+
+<h2>Causal Graph Propagation</h2>
+<div class="node">Node A → Event e1</div>
+<div class="node">Node B → Event e2</div>
+<div class="node">Node C → Event e3</div>
+
+<h2>Replay Timeline</h2>
+<div class="event">t0 → initialize</div>
+<div class="event">t1 → causal merge</div>
+<div class="event">t2 → replay reconstruction</div>
+
+<h2>Partition / Recovery</h2>
+<div class="event">Partition Detected</div>
+<div class="event">Synchronization Restored</div>
+<div class="event">Deterministic Convergence Achieved</div>
+
+<h2>Execution Lineage</h2>
+<div class="event">e1 → e2 → e3 → e4</div>
+
+</body>
+</html>
