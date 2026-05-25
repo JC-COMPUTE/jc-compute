@@ -4,7 +4,7 @@
 
 A formally verified, deterministic distributed computing system that eliminates the need for consensus protocols, Byzantine fault tolerance, or centralized coordination. Built on lattice-based merging, capability-based isolation, and proof-carrying computation.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)
 [![GitHub Repository](https://img.shields.io/badge/GitHub-JC--COMPUTE-blue)](https://github.com/JC-COMPUTE/jc-compute)
 
 ---
@@ -43,18 +43,22 @@ Mathematically guaranteed.
 ```bash
 git clone https://github.com/JC-COMPUTE/jc-compute.git
 cd jc-compute
+cd jc-compute/jc
 npm install
+npm test
 ```
 
 ### Run Tests
 
 ```bash
+cd jc-compute/jc
 npm test
 ```
 
 ### Run Benchmarks
 
 ```bash
+cd jc-compute/jc
 npm run benchmark
 ```
 
@@ -62,48 +66,72 @@ npm run benchmark
 
 ```bash
 # TLA+ model checking
-tlc formal/JCCompute.tla
+tlc jc-compute/formal/JCCompute.tla
 
 # Lean proof checking
-lean formal/ReplayDeterminism.lean
+lean jc-compute/formal/ReplayDeterminism.lean
 
 # Coq theorem proving
-coq formal/Convergence.v
+coq jc-compute/formal/ReplayDeterminism.v
 ```
 
 ---
 
 ## Documentation
 
-### Essential Reading
+### Essential Reading (Root Directory)
 
-1. **[OPERATIONAL_SEMANTICS.md](./docs/OPERATIONAL_SEMANTICS.md)** (25 KB, 8,200 words)
+1. **[OPERATIONAL_SEMANTICS.md](./OPERATIONAL_SEMANTICS.md)** (25 KB, 8,200 words)
    - Complete formal specification of the execution model
    - 17 sections covering core framework, execution pipeline, causal ordering, merge semantics
    - Four major safety theorems with machine-checked proofs
    - Mathematical notation and formal definitions
 
-2. **[FORMAL_DEFINITIONS.md](./docs/FORMAL_DEFINITIONS.md)** (18 KB, 400+ definitions)
+2. **[FORMAL_DEFINITIONS.md](./FORMAL_DEFINITIONS.md)** (18 KB, 400+ definitions)
    - Mathematical reference for all notation
    - Symbol definitions and equations
    - Proof procedures and verification techniques
    - Computational complexity tables
 
-3. **[WHITEPAPER.pdf](./docs/WHITEPAPER.pdf)** (92 KB)
+3. **[WHITEPAPER.pdf](./WHITEPAPER.pdf)** (92 KB)
    - Original design and motivation
    - High-level overview of the approach
    - Use cases and applications
 
-4. **[JC_Compute_v1.0.0_with_Analogies.md](./docs/JC_Compute_with_Analogies.md)**
-   - Complete technical explanation with relatable everyday analogies
-   - 30+ analogies explaining complex concepts
-   - Ideal for understanding the "why" behind each component
+### Additional Core Documentation
 
-### Additional Resources
+- **[LICENSE.md](./LICENSE.md)** - MIT License with reserved model rights
+- **[docs/AUTHORITATIVE_CONVERGENCE.md](./docs/AUTHORITATIVE_CONVERGENCE.md)** - Convergence proofs
+- **[docs/BENCHMARKS.md](./docs/BENCHMARKS.md)** - Performance analysis
 
-- **[AUTHOR_STATEMENT.md](./docs/AUTHOR_STATEMENT.md)** - The vision, effort, and stakes
-- **[THE_SCOPE_OF_THIS_WORK.md](./docs/THE_SCOPE_OF_THIS_WORK.md)** - Understanding the research depth
-- **[LICENSING_STRATEGY.md](./docs/LICENSING_STRATEGY.md)** - License explanation and precedents
+### Implementation Documentation
+
+See the **[jc-compute/](./jc-compute/)** directory for:
+- **[jc-compute/jc/CONTRIBUTING.md](./jc-compute/jc/CONTRIBUTING.md)** - Contribution guidelines
+- **[jc-compute/jc/NOTICE.md](./jc-compute/jc/NOTICE.md)** - Project notice
+- **[jc-compute/jc/docs/](./jc-compute/jc/docs/)** - Complete implementation documentation:
+  - `guides/` - Getting started and core concepts
+  - `design/` - Deterministic execution, causal ordering, distributed convergence
+  - `api/` - API documentation for reducers, events, capabilities, replay
+  - `autonomous-runtime/` - AI coordination runtime
+  - `differentiation/` - How JC Compute differs from blockchains
+
+### Examples
+
+Complete working examples in **[jc-compute/jc/examples/](./jc-compute/jc/examples/)**:
+- **Counter** - Simple converging counter
+- **Todo App** - Collaborative todo list with automatic conflict resolution
+- **Distributed Ledger** - Bank ledger with formal invariants
+- **Killer App** - Collaborative editor with real-time merging
+
+### Formal Specifications
+
+Located in **[jc-compute/formal/](./jc-compute/formal/)**:
+- **[JCCompute.tla](./jc-compute/formal/JCCompute.tla)** - TLA+ specification
+- **[ReplayDeterminism.lean](./jc-compute/formal/ReplayDeterminism.lean)** - Lean proofs
+- **[ReplayDeterminism.v](./jc-compute/formal/ReplayDeterminism.v)** - Coq theorems
+- **[JCCompute.als](./jc-compute/formal/JCCompute.als)** - Alloy model
+- **[SYNC_CONVERGENCE.tla](./jc-compute/formal/SYNC_CONVERGENCE.tla)** - Synchronization convergence
 
 ---
 
@@ -304,7 +332,44 @@ const LedgerReducer = {
 };
 ```
 
-See `/examples` directory for complete implementations.
+See [jc-compute/jc/examples/](./jc-compute/jc/examples/) for complete implementations.
+
+---
+
+## Project Structure
+
+```
+jc-compute/
+├── OPERATIONAL_SEMANTICS.md          # Formal specification (8,200 words)
+├── FORMAL_DEFINITIONS.md             # Mathematical reference (400+ definitions)
+├── WHITEPAPER.pdf                    # Original design
+├── LICENSE.md                        # MIT + Reserved Model Rights
+├── README.md                         # This file
+├── docs/                             # Additional documentation
+│   ├── AUTHORITATIVE_CONVERGENCE.md  # Convergence proofs
+│   └── BENCHMARKS.md                 # Performance analysis
+├── jc-compute/                       # Complete implementation
+│   ├── jc/                           # TypeScript runtime
+│   │   ├── src/                      # Source code
+│   │   ├── dist/                     # Compiled output
+│   │   ├── tests/                    # Test suite
+│   │   ├── examples/                 # Working examples
+│   │   ├── benchmarks/               # Performance benchmarks
+│   │   ├── docs/                     # Implementation documentation
+│   │   └── package.json              # Dependencies
+│   ├── formal/                       # Formal specifications
+│   │   ├── JCCompute.tla             # TLA+ spec
+│   │   ├── JCCompute.als             # Alloy model
+│   │   ├── ReplayDeterminism.lean    # Lean proofs
+│   │   ├── ReplayDeterminism.v       # Coq theorems
+│   │   └── *.tla                     # Additional TLA+ specs
+│   ├── deterministic_ai/             # AI coordination runtime
+│   ├── chaos_testing/                # Chaos/fault injection testing
+│   ├── verification/                 # Verification tools
+│   └── visual_tooling/               # Debugging visualizations
+├── benchmarks/                       # Benchmark results
+└── runtime_proof_demo/               # Runtime proof demonstrations
+```
 
 ---
 
@@ -312,12 +377,14 @@ See `/examples` directory for complete implementations.
 
 We welcome contributions! To maintain the integrity of the formal framework:
 
-1. **Understand the model** - Read OPERATIONAL_SEMANTICS.md
+1. **Understand the model** - Read [OPERATIONAL_SEMANTICS.md](./OPERATIONAL_SEMANTICS.md)
 2. **Maintain determinism** - All reducers must be pure functions
 3. **Respect isolation** - Only access declared keyspace
 4. **Check invariants** - All state transitions must preserve invariants
 5. **Add tests** - Include tests for all new functionality
 6. **Update proofs** - If you change the model, update the formal specs
+
+See [jc-compute/jc/CONTRIBUTING.md](./jc-compute/jc/CONTRIBUTING.md) for detailed guidelines.
 
 **Attribution**: Contributions will be acknowledged in the CONTRIBUTORS file.
 
@@ -334,7 +401,7 @@ This project is released under the **MIT License** with **reserved model rights*
 - ❌ You cannot claim the computational model as your own
 - ❌ You cannot patent the core approach without permission
 
-See [LICENSE](./LICENSE) for complete details.
+See [LICENSE.md](./LICENSE.md) for complete details.
 
 ### Commercial Licensing
 
@@ -383,7 +450,7 @@ This work represents **years of systematic research** and **300,000+ documented 
 - Working implementation with comprehensive tests
 - Formal verification tools included
 
-See [THE_SCOPE_OF_THIS_WORK.md](./docs/THE_SCOPE_OF_THIS_WORK.md) for details on the research effort.
+The research process is publicly documented, showing the complete progression from theoretical foundations through formal verification to working implementation.
 
 ---
 
@@ -405,17 +472,17 @@ See [THE_SCOPE_OF_THIS_WORK.md](./docs/THE_SCOPE_OF_THIS_WORK.md) for details on
 ## Getting Help
 
 ### For Understanding the Theory
-- Start with [JC_Compute_with_Analogies.md](./docs/JC_Compute_with_Analogies.md) for intuitive explanations
-- Read [OPERATIONAL_SEMANTICS.md](./docs/OPERATIONAL_SEMANTICS.md) for formal details
-- Check [FORMAL_DEFINITIONS.md](./docs/FORMAL_DEFINITIONS.md) for mathematical notation
+- Start with [OPERATIONAL_SEMANTICS.md](./OPERATIONAL_SEMANTICS.md) for formal details
+- Read [FORMAL_DEFINITIONS.md](./FORMAL_DEFINITIONS.md) for mathematical notation
+- Check [WHITEPAPER.pdf](./WHITEPAPER.pdf) for high-level overview
 
 ### For Implementation Questions
-- See `/examples` for working code
-- Review `/test` for test patterns
-- Check the TypeScript API documentation
+- See [jc-compute/jc/examples/](./jc-compute/jc/examples/) for working code
+- Review [jc-compute/jc/tests/](./jc-compute/jc/tests/) for test patterns
+- Check [jc-compute/jc/docs/](./jc-compute/jc/docs/) for comprehensive documentation
 
 ### For Contributing
-- See CONTRIBUTING.md (coming soon)
+- See [jc-compute/jc/CONTRIBUTING.md](./jc-compute/jc/CONTRIBUTING.md)
 - Open an issue to discuss changes
 - Reference the formal model in your PRs
 
