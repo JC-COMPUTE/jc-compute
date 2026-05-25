@@ -38,7 +38,7 @@ jc-compute/
 │   ├── AUTHORITATIVE_CONVERGENCE.md
 │   └── BENCHMARKS.md
 │
-├── jc/                     # Core implementation
+├── jc-compute/                     # Core implementation
 │   ├── jc/                         # TypeScript runtime
 │   │   ├── src/                    # Source code
 │   │   ├── dist/                   # Compiled output
